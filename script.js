@@ -12,12 +12,12 @@ $(document).ready(function(){
 // Part 2
 // ************* Make name of image appear after 10 sec *************
 
-if ($("#img_label").length) {
+	if ($("#img_label").length) {
 
-	setTimeout(function () {
-		$("#img_label").html("Fruitcake");
-		}, 5000);
-}
+		setTimeout(function () {
+			$("#img_label").html("Fruitcake");
+			}, 5000);
+	}
 
 
 
@@ -27,61 +27,59 @@ if ($("#img_label").length) {
 // check for valid input when button is clicked (catch error)
 // Then convert mark to grade and display
 
-if ($("#conv_grade").length) {
+	if ($("#conv_grade").length) {
 
-	let button_grade = document.getElementById("conv_grade");
-	let div_mark_error = document.getElementById("div_mark_error");
-	let div_grade = document.getElementById("div_grade");
-	let mark = document.getElementById("mark");
+		let button_grade = document.getElementById("conv_grade");
+		let div_mark_error = document.getElementById("div_mark_error");
+		let div_grade = document.getElementById("div_grade");
+		let mark = document.getElementById("mark");
 
 
-button_grade.addEventListener("click", function(){
+	button_grade.addEventListener("click", function(){
 	
-
+		div_mark_error.innerText = "";
+		div_grade.innerText = "";
+		mark.style.borderColor = "black";
 	
-	div_mark_error.innerText = "";
-	div_grade.innerText = "";
-	mark.style.borderColor = "black";
+		// check if mark is valid
 	
-	// check if mark is valid
-	
-	try {
-		if ( isNaN(mark.value) ) throw "Input is not a number";
-		else if (mark.value === "" ) throw "Input is empty";
-		else if (mark.value <0) throw "Input should be non-negative";
-		else if (mark.value >=101) throw "Input should be less than 101"; 
-		else {
-			let grade = "";
-			switch (true) {
-				case (mark.value >= 90):
-					grade = "A";
-					break;
-				case (mark.value >= 80):
-					grade = "B";
-					break;
-				case (mark.value >= 70):
-					grade = "C";
-					break;
-				case (mark.value >= 50):
-					grade = "D";
-					break;
-				case (mark.value < 50):
-					grade = "F";
-					break;				
-				default:
-					throw "Unknown error";
+		try {
+			if ( isNaN(mark.value) ) throw "Input is not a number";
+			else if (mark.value === "" ) throw "Input is empty";
+			else if (mark.value <0) throw "Input should be non-negative";
+			else if (mark.value >=101) throw "Input should be less than 101"; 
+			else {
+				let grade = "";
+				switch (true) {
+					case (mark.value >= 90):
+						grade = "A";
+						break;
+					case (mark.value >= 80):
+						grade = "B";
+						break;
+					case (mark.value >= 70):
+						grade = "C";
+						break;
+					case (mark.value >= 50):
+						grade = "D";
+						break;
+					case (mark.value < 50):
+						grade = "F";
+						break;				
+					default:
+						throw "Unknown error";
+				}
+				div_grade.innerText = "The grade is " + grade;
 			}
-			div_grade.innerText = "The grade is " + grade;
 		}
-	}
-	catch ( err){
-		div_mark_error.innerHTML += err +"<br>";
+		catch ( err){
+			div_mark_error.innerHTML += err +"<br>";
 			mark.style.border = "solid";
 			mark.style.borderColor = "red";
-	}
-});
+		}
+	});
 
-}
+	}
 
 // Part 4
 // ************* Staff page *************
@@ -127,33 +125,34 @@ button_grade.addEventListener("click", function(){
 	];
 
 
-if ($("#table_staff").length) {
+	if ($("#table_staff").length) {
+		// in staff.html
+
+		// display the table
+		// add sort select & button
+		// set onclick to sort array and re-display table
 	
-	// in the staff.html
-	// display the table
-	// add sort select & button
-	// call function to sort array and re-display table
-	
-	if (dataSet.length !=0) {
-		$("#table_staff").empty();
-		$("#table_staff").append("<thead><tr>" +
-			"<th>Name</th><th>Title</th><th>Location</th>" +
-			"<th>Staff ID</th><th>Date joining</th><th>Salary</th>" +
-			"</tr></thead><tbody></tbody>");
+		if (dataSet.length !=0) {
+			// reset table
+			$("#table_staff").empty();
+			$("#table_staff").append("<thead><tr>" +
+				"<th>Name</th><th>Title</th><th>Location</th>" +
+				"<th>Staff ID</th><th>Date joining</th><th>Salary</th>" +
+				"</tr></thead><tbody></tbody>");
 		
-		dataSet.forEach(display_table);
-	}
+			dataSet.forEach(display_table);
+		}
 	
-	// add sort select & button
-	$("#table_staff").before("<form><label for='sortBy'>Sort by </label>" + 
+		// add sort select & button
+		$("#table_staff").before("<form><label for='sortBy'>Sort by </label>" + 
 			"<select name='sortBy' id='sortBy'><option value='name'>Name</option>" + 
 			"<option value='salary'>Salary</option></select>" + 
 			"<select name='sortOrder' id='sortOrder'><option value='asc'>Ascending</option>" + 
 			"<option value='des'>Descending</option></select>" + 
 			"<input type='button' id='button_sort' value='Sort'></form><br>");
 	
-	$("#button_sort").click(sort_data);
-}
+		$("#button_sort").click(sort_data);
+	}
 
 
 	function display_table (item, index) {
@@ -215,54 +214,50 @@ if ($("#table_staff").length) {
 // T(K) = T(°C) + 273.15
 // absolute zero = lowest temp = 0 K
 
-if ($("#conv_temp").length) {
+	if ($("#conv_temp").length) {
 
-	var button_temp = document.getElementById("conv_temp");
-	var div_temp_error = document.getElementById("div_temp_error");
-	var div_temp = document.getElementById("div_temp");
-	var temp = document.getElementById("tempF");
+		//var button_temp = document.getElementById("conv_temp");
+		//var div_temp_error = document.getElementById("div_temp_error");
+		//var div_temp = document.getElementById("div_temp");
+		//var temp = document.getElementById("tempF");
 
-	$("#conv_temp").click (function (){
+		$("#conv_temp").click (function (){
 	
-	$("#div_temp_error").html("");
-	$("#div_temp").html("");
-	$("#tempF").css("border", "black solid 1px")
-	//temp.style.borderColor = "black";
+			$("#div_temp_error").html("");
+			$("#div_temp").html("");
+			$("#tempF").css("border", "black solid 1px")
 	
-	var temp_F = temp.value;
-	var temp_C = 0;
-	var temp_K = 0;
+		var temp_F = $("#tempF").val();
+		var temp_C = 0;
+		var temp_K = 0;
 	
-	// check if temp is valid
+		// check if temp is valid
 	
-	try {
-		if ( isNaN(temp_F) ) throw "Input is not a number";
-		else if (temp_F === "" ) throw "Input is empty";
+		try {
+			if ( isNaN(temp_F) ) throw "Input is not a number";
+			else if (temp_F === "" ) throw "Input is empty";
 		
-		else {
-			temp_C = (temp_F -32 ) *5 / 9;
-			temp_K = temp_C + 273.15
+			else {
+				temp_C = (temp_F -32 ) *5 / 9;
+				temp_K = temp_C + 273.15
 			
-			if (temp_K < 0) throw "Temperature is below absolute zero";
-			else
-			{
-				$("#div_temp").html("The temperature converted to Celsius is " + 
-					parseFloat(temp_C).toFixed(2) + "°C <br>" + 
-					"The temperature converted to Kelvin is " + 
-					parseFloat(temp_K).toFixed(2) + " Kelvin");
+				if (temp_K < 0) throw "Temperature is below absolute zero";
+				else
+				{
+					$("#div_temp").html("The temperature converted to Celsius is " + 
+						parseFloat(temp_C).toFixed(2) + "°C <br>" + 
+						"The temperature converted to Kelvin is " + 
+						parseFloat(temp_K).toFixed(2) + " Kelvin");
+				}
+
 			}
-
 		}
-	}
-	catch ( err){
-		$("#div_temp_error").html(err + "<br>");
-		$("#tempF").css("border", "red solid 1px")
+		catch (err){
+			$("#div_temp_error").html(err + "<br>");
+			$("#tempF").css("border", "red solid 1px")
+		}
+		});
 
 	}
-});
-
-}
-
-
 
 });

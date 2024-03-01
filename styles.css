@@ -22,7 +22,6 @@ body {
 	--bg-navbar: #274472;
 	--bg-navbar-text: #FFFDD0;
 	--bg-text: #274472;
-	
 }
 
 #navbar {
@@ -56,7 +55,6 @@ body {
 }
 
 
-
 .div_main {
 	float: left;
 	overflow-x: hidden;
@@ -88,8 +86,6 @@ img {
   padding: 5px;
   width: 200px;
 }
-
-
 
 .error_msg {
 	color: red;
